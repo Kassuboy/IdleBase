@@ -10,12 +10,20 @@ public class Spawnpoints : MonoBehaviour
 
     float spawnTimer = 2;
     float spawnRate = 6;
-    int enemyCount = 3;
+    int enemyCount = 10;
+    int additionalEnemies = 0;
+    public int GameLevel = 1;
+
+    Player player;
+    Enemy enemyHp1;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnNextEnemy());
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        enemyHp1 = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+        
         StartCoroutine(SpawnNextEnemyRate());
     }
 
@@ -23,14 +31,25 @@ public class Spawnpoints : MonoBehaviour
     {
         int nextSpawnLocation = Random.Range(0, spawnPoints.Length);
         
+        if(enemyCount == 0 && !player.closestEnemy)
+        {
+            additionalEnemies ++;
+            enemyHp1.enemyHp1 *= 1.3f;
+            enemyCount = 30 + additionalEnemies;
+            Debug.Log("levelup");
 
-        if(enemyCount > 0)
+        }
+
+        else if(enemyCount > 0)
         {
             enemyCount--;
             Instantiate(enemy, spawnPoints[nextSpawnLocation].transform.position, Quaternion.identity);
         }
         
         yield return new WaitForSeconds(spawnTimer);
+
+       
+        
 
         if (!gameManager.gameOver)
         {

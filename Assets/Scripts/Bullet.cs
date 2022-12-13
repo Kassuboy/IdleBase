@@ -5,8 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public GameObject enemy;
-    EnemyHp enemyhp;
-    float speed = 10f;
+    Enemy enemyhp;
+    float speed = 15f;
 
     public float damage = 10;
 
@@ -14,8 +14,8 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
-        enemyhp = enemy.GetComponent<EnemyHp>();
-        damage = 10;
+        enemyhp = enemy.GetComponent<Enemy>();
+        damage = 25;
     }
 
     // Update is called once per frame
@@ -44,7 +44,8 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
 
-            enemyhp.enemyHp -= damage;
+            enemyhp.enemyHp1 -= damage;
+            //Debug.Log(enemyhp.enemyHp1);
         }
     }
 }
