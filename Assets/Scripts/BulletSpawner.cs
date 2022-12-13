@@ -19,7 +19,7 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {   
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 1.3)
         { 
             timer = 0;
             Spawnbullet();

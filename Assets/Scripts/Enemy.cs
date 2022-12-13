@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     GameObject player;
     Rigidbody2D rb;
+
+    [SerializeField] Bullet bullet;
     [SerializeField] Vector3 offSet;
     [SerializeField] float sqrOffSet;
     Enemy script;
@@ -13,19 +15,31 @@ public class Enemy : MonoBehaviour
 
     float speed = 1f;
 
+    float health = 100;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         script = GetComponent<Enemy>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        Offset();
-        Moveenemy();
+        if (health > 0)
+        {
+            Offset();
+            Moveenemy();
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     void Offset()
@@ -44,6 +58,17 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             script.enabled = false;
+        }
+        else if(collision.gameObject.tag == "Bullet")
+        {
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            script.enabled = true;
         }
     }
 }

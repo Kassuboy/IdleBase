@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         if (allEnemies.Length > 0)
         {
             closestEnemy = ClosestEnemy();
-            Debug.Log(closestEnemy.name);
+            
 
         }
         
