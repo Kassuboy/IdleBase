@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     Enemy script;
 
 
-    float speed = 5f;
+    float speed = 1f;
 
     // Start is called before the first frame update
     void Start()
