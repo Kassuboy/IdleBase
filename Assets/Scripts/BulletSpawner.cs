@@ -7,19 +7,21 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletPos;
 
+    Player player;
+
     float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {   
         timer += Time.deltaTime;
-        if (timer > 1.3)
+        if (timer > 0.3 && player.closestEnemy)
         { 
             timer = 0;
             Spawnbullet();

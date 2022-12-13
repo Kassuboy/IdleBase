@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] GameObject enemy;
+    public GameObject enemy;
     EnemyHp enemyhp;
-    float speed = 5;
+    float speed = 10f;
 
     public float damage = 10;
 
@@ -43,6 +43,8 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
+
+            enemyhp.enemyHp -= damage;
         }
     }
 }

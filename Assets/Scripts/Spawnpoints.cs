@@ -10,7 +10,7 @@ public class Spawnpoints : MonoBehaviour
 
     float spawnTimer = 2;
     float spawnRate = 6;
-    int enemyCount = 30;
+    int enemyCount = 3;
 
     // Start is called before the first frame update
     void Start()

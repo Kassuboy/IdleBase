@@ -35,10 +35,10 @@ public class Player : MonoBehaviour
     }
 
 
-    GameObject ClosestEnemy()
+    public GameObject ClosestEnemy()
     {
 
-        GameObject closestHere = allEnemies[0];
+        GameObject closestHere = gameObject;
         float leastDistance = Mathf.Infinity;
 
         foreach (var enemy in allEnemies)
