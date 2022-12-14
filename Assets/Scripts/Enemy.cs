@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     
 
 
-    public float speed = 1f;
+    public float speed = 3f;
 
     public float enemyHp1 = 100f;
 

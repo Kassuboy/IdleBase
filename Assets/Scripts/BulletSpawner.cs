@@ -12,7 +12,7 @@ public class BulletSpawner : MonoBehaviour
 
     Vector3 offSet;
     float sqrOffSet;
-    float lengthCheak = 8;
+    [SerializeField] float lengthCheak = 12f;
 
     float timer = 0;
 
@@ -36,8 +36,12 @@ public class BulletSpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 0.3 && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
         { 
+           
+           
             timer = 0;
             Spawnbullet();
+
+            
         }
     }
 
