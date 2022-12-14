@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    Player player;
+
     public GameObject enemy;
     Enemy enemyhp;
     float speed = 15f;
@@ -13,6 +15,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         enemyhp = enemy.GetComponent<Enemy>();
         damage = 25;
@@ -22,9 +25,9 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
-        if (enemy)
+        if (player.closestEnemy)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, enemy.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, player.closestEnemy.transform.position, speed * Time.deltaTime);
         }
         else
         {

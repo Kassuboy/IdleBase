@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         {   
             Debug.Log("Enemy hp succsecfully lvl up");
             Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
-            enemyHp1 *= 1.3f;
+            enemyHp1 *= 1.15f;
             gameLvL += 1;
             Debug.Log(enemyHp1);
         }

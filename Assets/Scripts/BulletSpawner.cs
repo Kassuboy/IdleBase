@@ -8,6 +8,11 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] Transform bulletPos;
 
     Player player;
+    GameObject playerGo;
+
+    Vector3 offSet;
+    float sqrOffSet;
+    float lengthCheak = 8;
 
     float timer = 0;
 
@@ -15,13 +20,21 @@ public class BulletSpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerGo = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        if (player.closestEnemy)
+        {
+            offSet = playerGo.transform.position - player.closestEnemy.transform.position;
+            sqrOffSet = offSet.sqrMagnitude;
+        }
+        
+
         timer += Time.deltaTime;
-        if (timer > 0.3 && player.closestEnemy)
+        if (timer > 0.3 && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
         { 
             timer = 0;
             Spawnbullet();
@@ -33,4 +46,6 @@ public class BulletSpawner : MonoBehaviour
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         //Debug.Log("Bullet spawned");
     }
+
+    
 }

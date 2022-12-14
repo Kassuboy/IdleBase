@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Spawnpoint
   - GameManager
+  - SpScripts
   layers:
   - Default
   - TransparentFX
