@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+    GameManager gameManager;
     public string tagToDetect = "Enemy";
     public GameObject[] allEnemies;
     public GameObject closestEnemy;
+
+    public float PlayerHp = 100;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameObject.SetActive(true);
+        Debug.Log(gameObject.activeSelf);
     }
 
 
@@ -20,14 +25,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        allEnemies = GameObject.FindGameObjectsWithTag(tagToDetect);
-
-        if (allEnemies.Length > 0)
+        if (!gameManager.gameOver)
         {
-            closestEnemy = ClosestEnemy();
-            
+            allEnemies = GameObject.FindGameObjectsWithTag(tagToDetect);
 
+            if (PlayerHp <= 0)
+            {
+                gameManager.gameOver = true;
+            }
+
+            if (allEnemies.Length > 0)
+            {
+                closestEnemy = ClosestEnemy();
+            }
         }
+        
         
 
 
@@ -54,9 +66,17 @@ public class Player : MonoBehaviour
 
         }
 
-
-
-
         return closestHere;
+    }
+
+    IEnumerator PlayerDies()
+    {
+        gameManager.gameOver = true;
+        gameObject.SetActive(false);
+        Debug.Log("set false");
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(true);
+        Debug.Log("set true");
+
     }
 }

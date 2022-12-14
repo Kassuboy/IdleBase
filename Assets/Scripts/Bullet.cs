@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
        
-        damage = 10;
+        
         target = player.closestEnemy;
         enemyhp = target.GetComponent<Enemy>();
        

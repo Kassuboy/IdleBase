@@ -7,8 +7,10 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletPos;
 
+    //Scripts
     Player player;
     GameObject playerGo;
+    GameManager gameManager;
 
     Vector3 offSet;
     float sqrOffSet;
@@ -21,27 +23,31 @@ public class BulletSpawner : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerGo = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.closestEnemy)
+        if (!gameManager.gameOver)
         {
-            offSet = playerGo.transform.position - player.closestEnemy.transform.position;
-            sqrOffSet = offSet.sqrMagnitude;
-        }
-        
+            if (player.closestEnemy)
+            {
+                offSet = playerGo.transform.position - player.closestEnemy.transform.position;
+                sqrOffSet = offSet.sqrMagnitude;
+            }
 
-        timer += Time.deltaTime;
-        if (timer > 0.3 && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
-        { 
-           
-           
-            timer = 0;
-            Spawnbullet();
 
-            
+            timer += Time.deltaTime;
+            if (timer > 0.3 && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
+            {
+
+
+                timer = 0;
+                Spawnbullet();
+
+
+            }
         }
     }
 

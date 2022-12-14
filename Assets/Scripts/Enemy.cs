@@ -7,15 +7,17 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Rigidbody2D rb;
 
+    
+    
+    //Scripts
     [SerializeField] Bullet bullet;
-    
-    Enemy script;
+    EnemyDamage enemyDamageScript;
     Spawnpoints spawnPointsscr;
-    
+    Enemy script;
+    GameManager gameManager;
 
 
-    public float speed = 3f;
-
+    public float speed = 5f;
     public float enemyHp1 = 100f;
 
     int gameLvL = 1;
@@ -29,41 +31,36 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         script = GetComponent<Enemy>();
-       
+        enemyDamageScript = GetComponent<EnemyDamage>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
 
-        if (enemyHp1 > 0)
+        if (!gameManager.gameOver)
         {
-            
-            Moveenemy();
+            if (enemyHp1 > 0)
+            {
 
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-        if(spawnPointsscr.GameLevel == gameLvL)
-        {
-            
-            
-        }
-        else
-        {   
-            Debug.Log("Enemy hp succsecfully lvl up");
-            Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
-            enemyHp1 *= 1.15f;
-            gameLvL += 1;
-            Debug.Log(enemyHp1);
-        }
-        
+                Moveenemy();
 
-
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            if(spawnPointsscr.GameLevel != gameLvL)
+            {
+                Debug.Log("Enemy hp succsecfully lvl up");
+                Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
+                enemyHp1 *= 1.15f;
+                gameLvL += 1;
+                Debug.Log(enemyHp1);
+            } 
+        }
     }
 
    
@@ -77,10 +74,9 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             script.enabled = false;
+            enemyDamageScript.enabled = true;
         }
-        else if(collision.gameObject.tag == "Bullet")
-        {
-        }
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)

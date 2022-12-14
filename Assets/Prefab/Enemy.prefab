@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8522597562932700088}
   - component: {fileID: 7571669109971895372}
   - component: {fileID: 3198748657093734819}
+  - component: {fileID: 2566508013400195175}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2500386534385983157, guid: 92154eab9ee720945aeb0baf9b769a0d, type: 3}
-  speed: 1
+  speed: 3
   enemyHp1: 100
 --- !u!50 &7571669109971895372
 Rigidbody2D:
@@ -139,3 +140,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2566508013400195175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205408583475242541}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e403317ca9eae40a4b6f100a8fb467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
