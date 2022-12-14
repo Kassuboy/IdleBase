@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Bullet bullet;
     
     Enemy script;
+    Spawnpoints spawnPointsscr;
     
 
 
@@ -17,12 +18,14 @@ public class Enemy : MonoBehaviour
 
     public float enemyHp1 = 100f;
 
-    
+    int gameLvL = 1;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnPointsscr = GameObject.FindGameObjectWithTag("SpScripts").GetComponent<Spawnpoints>();
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         script = GetComponent<Enemy>();
@@ -32,6 +35,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (enemyHp1 > 0)
         {
             
@@ -41,6 +46,20 @@ public class Enemy : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+        
+        if(spawnPointsscr.GameLevel == gameLvL)
+        {
+            
+            
+        }
+        else
+        {   
+            Debug.Log("Enemy hp succsecfully lvl up");
+            Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
+            enemyHp1 *= 1.3f;
+            gameLvL += 1;
+            Debug.Log(enemyHp1);
         }
         
 

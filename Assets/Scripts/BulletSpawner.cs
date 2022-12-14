@@ -31,6 +31,6 @@ public class BulletSpawner : MonoBehaviour
     void Spawnbullet()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
-        Debug.Log("Bullet spawned");
+        //Debug.Log("Bullet spawned");
     }
 }
