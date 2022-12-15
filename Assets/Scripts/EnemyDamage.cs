@@ -6,6 +6,7 @@ public class EnemyDamage : MonoBehaviour
 {
 
     Player playerScript;
+    GameManager gameManager;
 
     float enemy1Dmg = 10;
 
@@ -16,16 +17,21 @@ public class EnemyDamage : MonoBehaviour
     {
         
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        dmgTimer += Time.deltaTime;
-        if(dmgTimer > 0.5)
+        if (!gameManager.gameOver)
         {
-            dmgTimer = 0;
-            playerScript.PlayerHp -= enemy1Dmg;
+            dmgTimer += Time.deltaTime;
+            if(dmgTimer > 0.5)
+            {
+                dmgTimer = 0;
+                playerScript.PlayerHp -= enemy1Dmg;
+            }
         }
+        
     }
 }

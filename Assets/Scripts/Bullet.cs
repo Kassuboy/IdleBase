@@ -5,12 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Player player;
+    GameManager gameManager;
 
     public GameObject enemy;
     Enemy enemyhp;
     [SerializeField] float speed = 15f;
 
     public float damage = 10;
+    int damageLvL = 1;
 
     GameObject target;
 
@@ -19,6 +21,7 @@ public class Bullet : MonoBehaviour
     {
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
        
         
         target = player.closestEnemy;
@@ -29,10 +32,16 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (target)
+        if (!gameManager.gameOver)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
+            if (target)
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -49,8 +58,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
 
-            enemyhp.enemyHp1 -= damage;
+            enemyhp.enemyHp1 -= player.bulletDmg;
             //Debug.Log(enemyhp.enemyHp1);
         }
     }
+
+   
 }

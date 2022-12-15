@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //scripts
     GameManager gameManager;
+
     public string tagToDetect = "Enemy";
     public GameObject[] allEnemies;
     public GameObject closestEnemy;
+    [SerializeField] Sprite circle;
+    [SerializeField] Sprite triangle;
 
     public float PlayerHp = 100;
+
+    //Gameobject LvL
+    int PlayerLvL = 1;
+    int BulletLvL = 1;
+
+    //bullet
+    public float bulletDmg = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        
+
         gameObject.SetActive(true);
         Debug.Log(gameObject.activeSelf);
+        
+        
     }
 
 
@@ -40,7 +55,10 @@ public class Player : MonoBehaviour
             }
         }
         
-        
+        if(PlayerLvL == 10)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = triangle;
+        }
 
 
 
@@ -69,5 +87,25 @@ public class Player : MonoBehaviour
         return closestHere;
     }
 
-   
+    public void PlayerLvLUp()
+    {
+        if (!gameManager.gameOver)
+        {
+            PlayerLvL++;
+            Debug.Log(PlayerLvL);
+        }
+        
+    }
+
+    public void BulletLvlUp()
+    {
+        if (!gameManager.gameOver)
+        {
+            bulletDmg *= 1.1f;
+            BulletLvL++;
+            Debug.Log(BulletLvL);
+        }
+
+    }
+
 }

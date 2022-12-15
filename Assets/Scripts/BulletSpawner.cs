@@ -17,6 +17,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] float lengthCheak = 12f;
 
     float timer = 0;
+    //Secound between bullet spawn
+    public float attackSpeed = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class BulletSpawner : MonoBehaviour
 
 
             timer += Time.deltaTime;
-            if (timer > 0.3 && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
+            if (timer > attackSpeed && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
             {
 
 
