@@ -1,28 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     GameObject player;
     Rigidbody2D rb;
-
     
-    
-    //Scripts
+    // Scripts
     [SerializeField] Bullet bullet;
     EnemyDamage enemyDamageScript;
     Spawnpoints spawnPointsscr;
     Enemy script;
     GameManager gameManager;
 
-
     public float speed = 5f;
     public float enemyHp1 = 100f;
 
     int gameLvL = 1;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -39,28 +32,27 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!gameManager.gameOver)
+        if (gameManager.gameOver)
         {
-            if (enemyHp1 > 0)
-            {
-
-                Moveenemy();
-
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            if(spawnPointsscr.GameLevel != gameLvL)
-            {
-                Debug.Log("Enemy hp succsecfully lvl up");
-                Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
-                enemyHp1 *= 1.15f;
-                gameLvL += 1;
-                Debug.Log(enemyHp1);
-            } 
+            return;
         }
+
+        if (enemyHp1 > 0)
+        {
+            Moveenemy();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        if(spawnPointsscr.GameLevel != gameLvL)
+        {
+            Debug.Log("Enemy hp succsecfully lvl up");
+            Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
+            enemyHp1 *= 1.15f;
+            gameLvL += 1;
+            Debug.Log(enemyHp1);
+        } 
     }
 
    

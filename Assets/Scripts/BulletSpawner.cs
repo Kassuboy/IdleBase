@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
@@ -35,7 +33,7 @@ public class BulletSpawner : MonoBehaviour
         if (gameManager.gameOver) {
             return;
         }
-        
+
         if (playerScript.closestEnemy)
         {
             offSet = player.transform.position - playerScript.closestEnemy.transform.position;
@@ -53,6 +51,5 @@ public class BulletSpawner : MonoBehaviour
     void Spawnbullet()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
-        //Debug.Log("Bullet spawned");
     } 
 }
