@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 9205408583475242541, guid: ddfd5446e8da1b24e9f18c15e495cef5, type: 3}
-  damage: 10
+  speed: 15
+  damage: 90
 --- !u!60 &1981227046628878921
 PolygonCollider2D:
   m_ObjectHideFlags: 0

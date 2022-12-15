@@ -14,11 +14,11 @@ public class BulletSpawner : MonoBehaviour
 
     Vector3 offSet;
     float sqrOffSet;
-    [SerializeField] float lengthCheak = 12f;
+    public float lengthCheak = 12f;
 
     float timer = 0;
     //Secound between bullet spawn
-    public float attackSpeed = 0.5f;
+    public float attackSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()

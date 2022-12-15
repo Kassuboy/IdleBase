@@ -9,10 +9,8 @@ public class Bullet : MonoBehaviour
 
     public GameObject enemy;
     Enemy enemyhp;
-    [SerializeField] float speed = 15f;
-
-    public float damage = 10;
-    int damageLvL = 1;
+    [SerializeField] float speed = 25f;
+    
 
     GameObject target;
 
@@ -58,7 +56,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
 
-            enemyhp.enemyHp1 -= player.bulletDmg;
+            enemyhp.enemyHp1 -= gameManager.bulletDmg;
             //Debug.Log(enemyhp.enemyHp1);
         }
     }

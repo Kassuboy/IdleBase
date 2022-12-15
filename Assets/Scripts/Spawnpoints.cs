@@ -45,6 +45,7 @@ public class Spawnpoints : MonoBehaviour
             additionalEnemies ++;
             enemyCount = 10 + additionalEnemies;
             GameLevel ++;
+            spawnTimer = 2;
             Debug.Log("levelup");
 
         }
