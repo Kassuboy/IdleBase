@@ -69,14 +69,5 @@ public class Player : MonoBehaviour
         return closestHere;
     }
 
-    IEnumerator PlayerDies()
-    {
-        gameManager.gameOver = true;
-        gameObject.SetActive(false);
-        Debug.Log("set false");
-        yield return new WaitForSeconds(1f);
-        gameObject.SetActive(true);
-        Debug.Log("set true");
-
-    }
+   
 }
