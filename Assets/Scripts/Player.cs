@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //scripts
+    // Scripts
     GameManager gameManager;
 
     public string tagToDetect = "Enemy";
@@ -13,21 +13,15 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite circle;
     [SerializeField] Sprite triangle;
 
-    public float PlayerHp = 100;
-
-    
-    
+    public float playerHp = 100;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        
-
+    
         gameObject.SetActive(true);
         Debug.Log(gameObject.activeSelf);
-        
-        
     }
 
 
@@ -40,7 +34,7 @@ public class Player : MonoBehaviour
         {
             allEnemies = GameObject.FindGameObjectsWithTag(tagToDetect);
 
-            if (PlayerHp <= 0)
+            if (playerHp <= 0)
             {
                 gameManager.gameOver = true;
             }
@@ -55,21 +49,16 @@ public class Player : MonoBehaviour
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = triangle;
         }
-
-
-
     }
 
 
     public GameObject ClosestEnemy()
     {
-
         GameObject closestHere = gameObject;
         float leastDistance = Mathf.Infinity;
 
         foreach (var enemy in allEnemies)
         {
-
             float distanceHere = Vector3.Distance(transform.position, enemy.transform.position);
 
             if (distanceHere < leastDistance)
@@ -77,12 +66,8 @@ public class Player : MonoBehaviour
                 leastDistance = distanceHere;
                 closestHere = enemy;
             }
-
         }
-
         return closestHere;
     }
-
-   
 
 }

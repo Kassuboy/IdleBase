@@ -7,9 +7,9 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletPos;
 
-    //Scripts
-    Player player;
-    GameObject playerGo;
+    // Scripts
+    Player playerScript;
+    GameObject player;
     GameManager gameManager;
 
     Vector3 offSet;
@@ -17,39 +17,36 @@ public class BulletSpawner : MonoBehaviour
     public float lengthCheak = 12f;
 
     float timer = 0;
-    //Secound between bullet spawn
+    // Seconds between bullet spawn
     public float attackSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        playerGo = GameObject.FindGameObjectWithTag("Player");
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.gameOver)
+        // Do nothing if game is over
+        if (gameManager.gameOver) {
+            return;
+        }
+        
+        if (playerScript.closestEnemy)
         {
-            if (player.closestEnemy)
-            {
-                offSet = playerGo.transform.position - player.closestEnemy.transform.position;
-                sqrOffSet = offSet.sqrMagnitude;
-            }
+            offSet = player.transform.position - playerScript.closestEnemy.transform.position;
+            sqrOffSet = offSet.sqrMagnitude;
+        }
 
-
-            timer += Time.deltaTime;
-            if (timer > attackSpeed && player.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
-            {
-
-
-                timer = 0;
-                Spawnbullet();
-
-
-            }
+        timer += Time.deltaTime;
+        if (timer > attackSpeed && playerScript.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
+        {
+            timer = 0;
+            Spawnbullet();
         }
     }
 
@@ -57,7 +54,5 @@ public class BulletSpawner : MonoBehaviour
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         //Debug.Log("Bullet spawned");
-    }
-
-    
+    } 
 }

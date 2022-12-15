@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackRange : MonoBehaviour
 {
     int steps = 1000;
-   
-    
 
     LineRenderer lindRenderer;
     BulletSpawner bulletSpawner;
@@ -15,7 +11,6 @@ public class AttackRange : MonoBehaviour
     {
         lindRenderer = GetComponent<LineRenderer>();
         bulletSpawner = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BulletSpawner>();
-
     }
 
     private void Update()
@@ -42,7 +37,6 @@ public class AttackRange : MonoBehaviour
             Vector3 currentPosition = new Vector3(x, y + 9.31f, 0f);
 
             lindRenderer.SetPosition(currentStep, currentPosition);
-
         }
     }
 }

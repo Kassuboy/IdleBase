@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
@@ -9,13 +7,11 @@ public class EnemyDamage : MonoBehaviour
     GameManager gameManager;
 
     float enemy1Dmg = 10;
-
     float dmgTimer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -29,9 +25,8 @@ public class EnemyDamage : MonoBehaviour
             if(dmgTimer > 0.5)
             {
                 dmgTimer = 0;
-                playerScript.PlayerHp -= enemy1Dmg;
+                playerScript.playerHp -= enemy1Dmg;
             }
-        }
-        
+        } 
     }
 }
