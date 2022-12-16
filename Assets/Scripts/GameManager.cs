@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     private void Update()
     {
 
-        dmgText.text = BulletLvL.ToString();
+        dmgText.text = "LvL: " + BulletLvL.ToString();
 
         if (runOnce == 0 && gameOver == true)
         {
