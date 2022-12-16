@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackRange : MonoBehaviour
 {
-    int steps = 1000;
+    int steps = 200;
 
     LineRenderer lindRenderer;
     BulletSpawner bulletSpawner;

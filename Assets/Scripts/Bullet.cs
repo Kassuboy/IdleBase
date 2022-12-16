@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float speed = 25f;
     
     GameObject target;
+   
 
     // Start is called before the first frame update
     void Start()

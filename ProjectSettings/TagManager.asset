@@ -9,6 +9,7 @@ TagManager:
   - Spawnpoint
   - GameManager
   - SpScripts
+  - Canvas
   layers:
   - Default
   - TransparentFX

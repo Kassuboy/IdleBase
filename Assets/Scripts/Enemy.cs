@@ -5,12 +5,13 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Rigidbody2D rb;
     
+
     // Scripts
-    [SerializeField] Bullet bullet;
     EnemyDamage enemyDamageScript;
-    Spawnpoints spawnPointsscr;
-    Enemy script;
-    GameManager gameManager;
+    Spawnpoints spawnPointsScript;
+    Enemy Enemyscript;
+    GameManager gameManagerScript;
+    IngameMoney ingameMoneyScript;
 
     public float speed = 5f;
     public float enemyHp1 = 100f;
@@ -20,21 +21,23 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnPointsscr = GameObject.FindGameObjectWithTag("SpScripts").GetComponent<Spawnpoints>();
+        spawnPointsScript = GameObject.FindGameObjectWithTag("SpScripts").GetComponent<Spawnpoints>();
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        script = GetComponent<Enemy>();
+        Enemyscript = GetComponent<Enemy>();
         enemyDamageScript = GetComponent<EnemyDamage>();
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        ingameMoneyScript = GameObject.FindGameObjectWithTag("Canvas").GetComponent<IngameMoney>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameOver)
+        if (gameManagerScript.gameOver)
         {
             return;
+           
         }
 
         if (enemyHp1 > 0)
@@ -43,12 +46,13 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            ingameMoneyScript.Gold += 100000;
             Destroy(gameObject);
         }
-        if(spawnPointsscr.GameLevel != gameLvL)
+        if(spawnPointsScript.GameLevel != gameLvL)
         {
             Debug.Log("Enemy hp succsecfully lvl up");
-            Debug.Log(spawnPointsscr.GameLevel + "  " + gameLvL);
+            Debug.Log(spawnPointsScript.GameLevel + "  " + gameLvL);
             enemyHp1 *= 1.15f;
             gameLvL += 1;
             Debug.Log(enemyHp1);
@@ -65,7 +69,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            script.enabled = false;
+            Enemyscript.enabled = false;
             enemyDamageScript.enabled = true;
         }
         
@@ -75,7 +79,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            script.enabled = true;
+            Enemyscript.enabled = true;
         }
     }
 }
