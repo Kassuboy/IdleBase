@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     GameObject player;
+    public TMP_Text dmgText;
 
     //Scripts
     BulletSpawner bulletSpawner;
@@ -15,11 +17,21 @@ public class GameManager : MonoBehaviour
     //Gameobjects LvL
     public int PlayerLvL = 1;
     public int BulletLvL = 1;
-    int AttackSpeedLvL = 1;
+    public int AttackSpeedLvL = 1;
 
     //Bullet
     public float bulletDmg = 90f;
-    
+
+    public void LoadData(GameData data)
+    {
+        this.BulletLvL = data.BulletLvL;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.BulletLvL = this.BulletLvL;
+    }
+
 
     private void Start()
     {
@@ -32,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
+        dmgText.text = BulletLvL.ToString();
 
         if (runOnce == 0 && gameOver == true)
         {

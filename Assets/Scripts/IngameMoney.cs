@@ -3,55 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class IngameMoney : MonoBehaviour
+public class IngameMoney : MonoBehaviour, IDataPersistence
 {
     public TMP_Text textGold;
     public TMP_Text textGem;
 
-    public float Gold;
-    public float Gem = 0;
+    public float gold;
+    public float gem = 0;
+
+    public void LoadData(GameData data)
+    {
+        this.gold = data.gold;
+        this.gem = data.gem;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.gold = this.gold;
+        data.gem = this.gem;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        textGold.text = Gold.ToString();
+        textGold.text = gold.ToString();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Gold < 1000)
+        if(gold < 1000)
         {
-            textGold.text = Gold.ToString();
+            textGold.text = gold.ToString();
         }
 
-        else if (Gold >= 1000 && Gold < 999999)
+        else if (gold >= 1000 && gold < 999999)
         {
-            float newGold = Gold / 1000f;
+            float newGold = gold / 1000f;
             textGold.text = newGold.ToString() + "k";
         }
         else
         {
-            float goldOverMilj = Gold / 1000000f;
+            float goldOverMilj = gold / 1000000f;
             textGold.text = goldOverMilj.ToString() + "M";
         }
 
-        textGem.text = Gem.ToString();
-        if (Gem < 1000)
+        textGem.text = gem.ToString();
+        if (gem < 1000)
         {
-            textGem.text = Gem.ToString();
+            textGem.text = gem.ToString();
         }
 
-        else if (Gem >= 1000 && Gem < 999999)
+        else if (gem >= 1000 && gem < 999999)
         {
-            float newGem = Gem / 1000f;
-            textGem.text = Gem.ToString() + "k";
+            float newGem = gem / 1000f;
+            textGem.text = gem.ToString() + "k";
         }
         else
         {
-            float GemOverMilj = Gem / 1000000f;
-            textGem.text = Gem.ToString() + "M";
+            float GemOverMilj = gem / 1000000f;
+            textGem.text = gem.ToString() + "M";
         }
 
     }
