@@ -3,7 +3,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject player;
-    Rigidbody2D rb;
     
 
     // Scripts
@@ -22,8 +21,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         spawnPointsScript = GameObject.FindGameObjectWithTag("SpScripts").GetComponent<Spawnpoints>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");       
         Enemyscript = GetComponent<Enemy>();
         enemyDamageScript = GetComponent<EnemyDamage>();
         gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();

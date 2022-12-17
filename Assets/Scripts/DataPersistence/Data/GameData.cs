@@ -6,16 +6,21 @@ using UnityEngine;
 
 public class GameData
 {
-    public float gold;
-    public float gem;
+    public float Gold;
+    public float BulletUppgradeCost;
+
+    public float Gem;
     public int BulletLvL;
+    public float BulletDmg;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
     public GameData()
     {
-        this.gold = 0;
-        this.gem = 0;
+        this.Gold = 20f;
+        this.Gem = 0f;
         this.BulletLvL = 1;
+        this.BulletDmg = 90f;
+        this.BulletUppgradeCost = 10;
     }
 }

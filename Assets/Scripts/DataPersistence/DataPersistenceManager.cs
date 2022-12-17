@@ -51,8 +51,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
-
-        Debug.Log("Loaded gold count = " + gameData.gold);
     }
 
     public void SaveGame()
@@ -61,9 +59,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-
-        Debug.Log("Saved gold count = " + gameData.gold);
-
         dataHandler.Save(gameData);
     }
 
