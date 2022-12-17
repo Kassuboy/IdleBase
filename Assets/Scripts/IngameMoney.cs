@@ -41,21 +41,22 @@ public class IngameMoney : MonoBehaviour, IDataPersistence
         else if (gold >= 1000 && gold < 999999)
         {
             float newGold = gold / 1000f;
-            textGold.text = Mathf.Round(newGold).ToString() + "k";
+            textGold.text = newGold.ToString() + "k";
         }
         else
         {
             float goldOverMilj = gold / 1000000f;
-            textGold.text = Mathf.Round(goldOverMilj).ToString() + "M";
+            textGold.text = goldOverMilj.ToString() + "M";
+            
         }
 
         textGem.text = gem.ToString();
-        if (gem < 1000)
+        if (gem < 10000)
         {
             textGem.text = Mathf.Round(gem).ToString();
         }
 
-        else if (gem >= 1000 && gem < 999999)
+        else if (gem >= 10000 && gem < 999999)
         {
             float newGem = gem / 1000f;
             textGem.text = Mathf.Round(newGem).ToString() + "k";

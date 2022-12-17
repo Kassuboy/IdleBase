@@ -53,7 +53,7 @@ public class Spawnpoints : MonoBehaviour
        
         
 
-        if (!gameManager.gameOver)
+        if (!gameManager.gameOver && !gameManager.pause)
         {
             StartCoroutine(SpawnNextEnemy());
         }

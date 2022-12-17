@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
     public bool gameOver = false;
+    public bool pause = false;
+
     int runOnce = 0;
 
     //Gameobjects LvL

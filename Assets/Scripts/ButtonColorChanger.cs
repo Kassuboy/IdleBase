@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Test : MonoBehaviour
+public class ButtonColorChanger : MonoBehaviour
 {
-    Image test;
+    
 
     IngameMoney ingameMoney;
     GameManager gameManager;
+    [SerializeField] Image DamageButtonColor;
+
+    
 
     private void Start()
     {
         ingameMoney = GameObject.FindGameObjectWithTag("Canvas").GetComponent<IngameMoney>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        test = GetComponent<Image>();
-        GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+
+        
+        
     }
 
     private void Update()
     {
         if(ingameMoney.gold >= gameManager.bulletUppgradeCost)
         {
-            test.color = new Color32(0, 255, 0, 255);
+            DamageButtonColor.color = new Color32(0, 255, 0, 255);
         }
         else
         {
-            test.color = new Color32(255, 0, 0, 255);
+            DamageButtonColor.color = new Color32(255, 0, 0, 255);
         }
     }
 }
