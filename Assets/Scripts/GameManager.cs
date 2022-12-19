@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 {
     GameObject player;
     [SerializeField] GameObject settingsTab;
+    [SerializeField] GameObject scrollBarDmg;
+    [SerializeField] GameObject scrollBarPlayer;
+    [SerializeField] GameObject scrollBarWorld;
     public TMP_Text dmgText;
     public TMP_Text costText;
 
@@ -128,6 +131,27 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         pause = false;
         settingsTab.SetActive(false);
+    }
+
+    public void ScrollBarDmg()
+    {
+        scrollBarPlayer.SetActive(false);
+        scrollBarWorld.SetActive(false);
+        scrollBarDmg.SetActive(true);
+    }
+
+    public void ScrollBarPlayer()
+    {
+        scrollBarWorld.SetActive(false);
+        scrollBarDmg.SetActive(false);
+        scrollBarPlayer.SetActive(true);
+    }
+
+    public void ScrollBarWorld()
+    {
+        scrollBarPlayer.SetActive(false);
+        scrollBarDmg.SetActive(false);
+        scrollBarWorld.SetActive(true);
     }
 
 }

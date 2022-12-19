@@ -7,7 +7,7 @@ public class Spawnpoints : MonoBehaviour
     [SerializeField] GameObject[] spawnPoints;
     [SerializeField] GameObject enemy;
 
-    float spawnTimer = 2;
+    float spawnTimer = 1.8f;
     float spawnRate = 6;
     int enemyCount = 10;
     int additionalEnemies = 0;
@@ -33,18 +33,18 @@ public class Spawnpoints : MonoBehaviour
         
         
 
-        if(enemyCount > 0)
+        if(enemyCount > 0 && !gameManager.pause)
         {
             enemyCount--;
             Instantiate(enemy, spawnPoints[nextSpawnLocation].transform.position, Quaternion.identity);
         }
 
-        else if(enemyCount == 0 && !player.closestEnemy)
+        else if(enemyCount == 0 && !player.closestEnemy && !gameManager.pause)
         {
-            additionalEnemies ++;
+            additionalEnemies += 2;
             enemyCount = 10 + additionalEnemies;
             GameLevel ++;
-            spawnTimer = 2;
+            spawnTimer = 1.8f;
             Debug.Log("levelup");
 
         }
@@ -53,7 +53,7 @@ public class Spawnpoints : MonoBehaviour
        
         
 
-        if (!gameManager.gameOver && !gameManager.pause)
+        if (!gameManager.gameOver)
         {
             StartCoroutine(SpawnNextEnemy());
         }
@@ -64,9 +64,9 @@ public class Spawnpoints : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnRate);
 
-        if(spawnTimer >= 0.5f)
+        if(spawnTimer >= 0.3f && !gameManager.pause)
         {
-            spawnTimer -= 0.2f;
+            spawnTimer -= 0.3f;
         }
 
         StartCoroutine(SpawnNextEnemyRate());
