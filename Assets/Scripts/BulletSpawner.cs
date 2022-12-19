@@ -29,8 +29,8 @@ public class BulletSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Do nothing if game is over
-        if (gameManager.gameOver) {
+        // Do nothing if game is over or paused
+        if (gameManager.gameOver || gameManager.pause) {
             return;
         }
 

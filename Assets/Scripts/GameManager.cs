@@ -5,6 +5,7 @@ using TMPro;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     GameObject player;
+    [SerializeField] GameObject settingsTab;
     public TMP_Text dmgText;
     public TMP_Text costText;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        
 
         bulletSpawner = GetComponent<BulletSpawner>();
         ingameMoney = GameObject.FindGameObjectWithTag("Canvas").GetComponent<IngameMoney>();
@@ -114,6 +116,18 @@ public class GameManager : MonoBehaviour, IDataPersistence
             AttackSpeedLvL++;
         }
         
+    }
+
+    public void Pause()
+    {
+        pause = true;
+        settingsTab.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        pause = false;
+        settingsTab.SetActive(false);
     }
 
 }

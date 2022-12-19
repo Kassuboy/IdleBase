@@ -10,6 +10,8 @@ TagManager:
   - GameManager
   - SpScripts
   - Canvas
+  - Settings
+  - Pause
   layers:
   - Default
   - TransparentFX

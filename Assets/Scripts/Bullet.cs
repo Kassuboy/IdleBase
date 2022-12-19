@@ -24,9 +24,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameOver)
+        if (gameManager.gameOver || gameManager.pause)
         {
-            Destroy(gameObject);
+            return;
         }
 
         if (target)
