@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class ButtonManager : MonoBehaviour
 
     void LoadMainMenu()
     {
-        ScenesManager.Instance.LoadMainMenu();
+        SceneManager.LoadSceneAsync("MainMenu");
+        //ScenesManager.Instance.LoadMainMenu();
     }
 
 }

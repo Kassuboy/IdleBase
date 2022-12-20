@@ -27,11 +27,11 @@ public class ButtonColorChanger : MonoBehaviour
     {
         if(ingameMoney.gold >= gameManager.bulletUppgradeCost)
         {
-            DamageButtonColor.color = new Color32(0, 255, 0, 255);
+            //DamageButtonColor.color = new Color32(0, 255, 0, 255);
         }
         else
         {
-            DamageButtonColor.color = new Color32(255, 0, 0, 255);
+            //DamageButtonColor.color = new Color32(255, 0, 0, 255);
         }
     }
 }

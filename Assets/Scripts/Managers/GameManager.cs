@@ -1,17 +1,23 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     GameObject player;
+    [Header("GameObjectives")]
     [SerializeField] GameObject settingsTab;
     [SerializeField] GameObject scrollBarDmg;
     [SerializeField] GameObject scrollBarPlayer;
     [SerializeField] GameObject scrollBarWorld;
+
+    [Header("Text Fields")]
     public TMP_Text dmgText;
     public TMP_Text costText;
 
+    [Header("Upgrade Buttons")]
+    [SerializeField] Button damageUpgradeButton;
     //Scripts
     BulletSpawner bulletSpawner;
     IngameMoney ingameMoney;
@@ -84,7 +90,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
 
         }
-
+        if (!gameOver && ingameMoney.gold >= bulletUppgradeCost)
+        {
+            damageUpgradeButton.interactable = true;
+        }
+        else
+        {
+            damageUpgradeButton.interactable = false;
+        }
     }
      
     public void PlayerLvLUp()
@@ -101,6 +114,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         if (!gameOver && ingameMoney.gold >= bulletUppgradeCost)
         {
+            
             ingameMoney.gold -= bulletUppgradeCost;
             bulletUppgradeCost += 10f + bulletUppgradeCostMultiplyer;
             bulletUppgradeCostMultiplyer += 1f;
@@ -108,7 +122,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             BulletLvL++;
             Debug.Log(BulletLvL);
         }
-
     }
 
     public void AttackSpeedLvLUp()

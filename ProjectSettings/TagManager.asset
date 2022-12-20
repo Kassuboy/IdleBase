@@ -12,6 +12,7 @@ TagManager:
   - Canvas
   - Settings
   - Pause
+  - GemSpawnPoints
   layers:
   - Default
   - TransparentFX

@@ -62,7 +62,7 @@ public class Spawnpoints : MonoBehaviour
 
     IEnumerator SpawnNextEnemyRate()
     {
-        yield return new WaitForSeconds(spawnRate);
+        yield return new WaitForSeconds(2);
 
         if(spawnTimer >= 0.3f && !gameManager.pause)
         {

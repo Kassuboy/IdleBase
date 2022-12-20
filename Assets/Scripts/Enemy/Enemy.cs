@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     GameManager gameManagerScript;
     IngameMoney ingameMoneyScript;
 
-    public float speed = 5f;
+    public float speed = 7f;
     public float enemyHp1 = 100f;
 
     int gameLvL = 1;
