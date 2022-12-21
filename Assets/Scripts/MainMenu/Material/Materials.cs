@@ -6,18 +6,22 @@ using UnityEngine.UI;
 public class Materials : MonoBehaviour
 {
     [Header("Material Tab")]
-    [SerializeField] GameObject materialScrollBar;
+    [SerializeField] GameObject materialTab;
     [SerializeField] GameObject bulletScorllBar;
     [SerializeField] GameObject playerScrollBar;
 
     [Header("Upgrade Tab")]
-    [SerializeField] GameObject upgradeScrollBar;
-    
+    [SerializeField] GameObject upgradeTab;
+
+    [Header("Play Tab")]
+    [SerializeField] GameObject playTab;
+
+
 
     public void MaterialsTab()
     {
-        upgradeScrollBar.SetActive(false);
-        materialScrollBar.SetActive(true);
+        upgradeTab.SetActive(false);
+        materialTab.SetActive(true);
     }
 
     public void BulletScrollTab()
@@ -34,7 +38,14 @@ public class Materials : MonoBehaviour
 
     public void UpgradeTab()
     {
-        materialScrollBar.SetActive(false);
-        upgradeScrollBar.SetActive(true);
+        materialTab.SetActive(false);
+        upgradeTab.SetActive(true);
+    }
+
+    public void PlayTab()
+    {
+        upgradeTab.SetActive(false);
+        materialTab.SetActive(false);
+        playTab.SetActive(true);
     }
 }
