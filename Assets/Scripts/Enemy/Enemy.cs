@@ -63,7 +63,11 @@ public class Enemy : MonoBehaviour
    
     void Moveenemy()
     {
+        // Move towards player
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        
+        // Rotate towards player
+        transform.up = transform.position - player.transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
