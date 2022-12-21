@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject player;
+    private Animator animator;
     
 
     // Scripts
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
         enemyDamageScript = GetComponent<EnemyDamage>();
         gameManagerScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         ingameMoneyScript = GameObject.FindGameObjectWithTag("Canvas").GetComponent<IngameMoney>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour
         {
             Enemyscript.enabled = false;
             enemyDamageScript.enabled = true;
+            animator.SetBool("isAttacking", true);
         }
         
     }
@@ -79,6 +82,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Enemyscript.enabled = true;
+            animator.SetBool("isAttacking", false);
         }
     }
 }
