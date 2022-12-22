@@ -24,7 +24,7 @@ public class GemRandomSpawn : MonoBehaviour
     // Start is called before the first frame update
     private void Update()
     {
-        if (!gameManager.gameOver || !gameManager.pause)
+        if (!gameManager.gameOver && !gameManager.pause)
         {
 
             timer1 += Time.deltaTime;

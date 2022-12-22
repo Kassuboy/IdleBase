@@ -36,12 +36,14 @@ public class Enemy : MonoBehaviour
     {
         if (gameManagerScript.gameOver || gameManagerScript.pause)
         {
+            animator.enabled = false;
             return;
            
         }
 
         if (enemyHp1 > 0)
         {
+            animator.enabled = true;
             Moveenemy();
         }
         else

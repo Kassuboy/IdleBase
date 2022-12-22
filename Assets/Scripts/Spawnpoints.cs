@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Spawnpoints : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject[] spawnPoints;
     [SerializeField] GameObject enemy;
+    [SerializeField] TMP_Text waveText;
+    
 
     float spawnTimer = 1.8f;
     float spawnRate = 6;
@@ -72,5 +76,9 @@ public class Spawnpoints : MonoBehaviour
         StartCoroutine(SpawnNextEnemyRate());
     }
 
+    private void Update()
+    {
+        waveText.text = GameLevel.ToString();
+    }
 
 }
