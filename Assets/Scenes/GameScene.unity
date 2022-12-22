@@ -682,7 +682,7 @@ MonoBehaviour:
   - {fileID: 172522584}
   - {fileID: 1951464722}
   - {fileID: 1549021611}
-  enemy: {fileID: 9205408583475242541, guid: ddfd5446e8da1b24e9f18c15e495cef5, type: 3}
+  enemy: {fileID: 6412186967764906248, guid: f967c52fe78478f4a9bf07879e7e01e9, type: 3}
   GameLevel: 1
 --- !u!4 &51447792
 Transform:
