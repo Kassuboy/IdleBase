@@ -7,6 +7,13 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
+
+    [Header("Scripts")]
+    [SerializeField] GameManager gameManager;
+    [SerializeField] IngameMoney ingameMoney;
+
+    [Header("GemPauseScreen")]
+    [SerializeField] GameObject gemObjective;
     string _adUnitId = null; // This will remain null for unsupported platforms
 
     void Awake()
@@ -60,7 +67,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
-
+            ingameMoney.gem += 5f;
+            gemObjective.SetActive(false);
+            gameManager.pause = false;
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
         }
