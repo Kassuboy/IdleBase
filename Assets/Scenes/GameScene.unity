@@ -5734,6 +5734,9 @@ MonoBehaviour:
   _showAdButton: {fileID: 695315159}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+  gameManager: {fileID: 380495096}
+  ingameMoney: {fileID: 244549505}
+  gemObjective: {fileID: 822751257}
 --- !u!1 &673069684
 GameObject:
   m_ObjectHideFlags: 0
