@@ -49,7 +49,6 @@ public class Enemy : MonoBehaviour
         else
         {
             ingameMoneyScript.gold += 10;
-            ingameMoneyScript.gem += 1;
             Destroy(gameObject);
         }
         if(spawnPointsScript.GameLevel != gameLvL)

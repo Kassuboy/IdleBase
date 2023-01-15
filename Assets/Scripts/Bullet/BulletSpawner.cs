@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class BulletSpawner : MonoBehaviour
 {
@@ -17,6 +20,10 @@ public class BulletSpawner : MonoBehaviour
     float timer = 0;
     // Seconds between bullet spawn
     public float attackSpeed = 1f;
+
+    [Header("Doubble Shot")]
+    public float DoubbleShotChanceRate = 80f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +51,28 @@ public class BulletSpawner : MonoBehaviour
         if (timer > attackSpeed && playerScript.closestEnemy && sqrOffSet < lengthCheak * lengthCheak)
         {
             timer = 0;
-            Spawnbullet();
+            StartCoroutine(BulletSpawn());
         }
     }
 
     void Spawnbullet()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
-    } 
+    }
+
+    void DoubbleShot()
+    {
+        float DoubbleShotChance = Random.Range(0f, 100f);
+        Debug.Log(DoubbleShotChance);
+        if (DoubbleShotChance <= DoubbleShotChanceRate)
+        {
+            Spawnbullet();
+        }
+    }
+    IEnumerator BulletSpawn()
+    {
+        Spawnbullet();
+        yield return new WaitForSeconds(0.05f);
+        DoubbleShot();
+    }
 }
